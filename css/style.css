@@ -7,6 +7,7 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    object-fit: contain;
     padding: 50px;
 }
 
@@ -34,6 +35,10 @@ h2 {
     font-size: 1.8em;
 }
 
+h3 {
+    color: white;
+}
+
 main {
     font-family: 'Rubik', sans-serif;
     height: 85vh;
@@ -54,7 +59,7 @@ form {
 
 
 section{
-    background: var(--button-color);
+    background-color:transparent;
     padding: 30px;
     height: inherit;
     display: flex;
@@ -62,7 +67,7 @@ section{
     align-items: center;
     gap: 20px;
     border-radius: 10px;
-    box-shadow: 2px 2px black;
+    border: 3px solid black;
 }
 
 
@@ -94,7 +99,7 @@ input[type="radio"]:checked {
 
 input[type="submit"] {
     font-family: 'Creepster', sans-serif;
-    margin: 40px;
+    margin: 40px auto;
     padding: 20px;
     width: 30%;
     text-align: center;
