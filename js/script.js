@@ -1,9 +1,13 @@
 document.addEventListener('DOMContentLoaded', function () {
     function getResult(event) {
         event.preventDefault();
-        const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked')
-        const selectedValues = Array.from(checkboxes).map(checkbox => checkbox.value);
+        const checkboxes = document.querySelectorAll('input[type="radio"]:checked')
+        const selectedValues = Array.from(checkboxes).map(checkbox => radio.value);
 
+        // function modificarTexto() {
+        //     var paragrafo = document.getElementById("meuParagrafo");
+        //     paragrafo.innerHTML = "Texto modificado!";
+        // }
 
     let totalScore = 0;
     const Score = {
