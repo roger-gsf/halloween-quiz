@@ -1,49 +1,37 @@
 document.getElementById('form-quiz').addEventListener('submit', function (e) {
-        e.preventDefault();
+    e.preventDefault(); // impede o envio padrão do formulário
 
-        alert('clicou')
-        const checkboxes = document.querySelectorAll('input[type="radio"]:checked')
-        const selectedValues = Array.from(checkboxes).map(checkbox => radio.value);
-
-        console.log(selectedValues)
-
-        // function modificarTexto() {
-        //     var paragrafo = document.getElementById("meuParagrafo");
-        //     paragrafo.innerHTML = "Texto modificado!";
-        // }
-
-    let totalScore = 0;
-    const Score = {
-        q1: 0,
-        q2: 0,
-        q3: 0,
-        q4: 0,
-        q5: 0,
-        q6: 0,
-        q7: 0,
-        q8: 0,
-        q9: 0,
-        q10: 0
+    const correctAnswers = { // respostas corretas do quiz
+        q1: "Pamela Vorhess",
+        q2: "All work and no play makes Jack a dull boy.",
+        q3: "The Conjuring",
+        q4: "Poltergeists",
+        q5: "Freddy Krueger",
+        q6: "A forest",
+        q7: "The Ghostface mask",
+        q8: "The Ring",
+        q9: "Clowns",
+        q10: "Hypnosis"
     };
 
-    
-        if (selectedValues[1] === 'Pamela Vorhess') Score.q1 = 1;
-        if (selectedValues[2] === 'All work and no play makes Jack a dull boy') Score.q2 = 1;
-        if (selectedValues[3] === 'The Conjuring') Score.q3 = 1;
-        if (selectedValues[4] === 'Poltergeists') Score.q4 = 1;
-        if (selectedValues[5] === 'Freddy Krueger') Score.q5 = 1;
-        if (selectedValues[6] === 'A forest') Score.q6 = 1;
-        if (selectedValues[7] === 'The Ghostface mask') Score.q7 = 1;
-        if (selectedValues[8] === 'The Ring') Score.q8 = 1;
-        if (selectedValues[9] === 'Clowns') Score.q9 = 1;
-        if (selectedValues[10] === 'Brain surgery') Score.q10 = 1;
-    
-        Score.forEach((awnser) => {
-            if(awnser!=0){
-                totalScore+=1;
-            }
-        })
+    const userAnswers = {}; // objeto para armazenar as respostas do usuário
+    const selectedAnswers = document.querySelectorAll('input[type="radio"]:checked'); // seleciona todas as respostas marcadas
 
-        alert('Score:' + totalScore + ". Answers selected:" + selectedValues.join(', '));
-        
+    selectedAnswers.forEach((radio) => { // percorre cada resposta marcada
+        userAnswers[radio.name] = radio.value; // armazena a resposta do usuário no objeto userAnswers
+    });
+
+    let totalScore = 0; // inicializa a pontuação total
+    let resultMessage = ""; // inicializa a mensagem de resultado
+
+    for (let question in correctAnswers) { // percorre cada pergunta
+        if (correctAnswers[question] === userAnswers[question]) { // verifica se a resposta do usuário está correta
+            totalScore++; // incrementa a pontuação se a resposta estiver correta
+            resultMessage += `Correct! ${question}: ${userAnswers[question]}\n`; // adiciona mensagem de resposta correta
+        } else {
+            resultMessage += `Wrong. ${question}: Your answer: ${userAnswers[question]}, Correct answer: ${correctAnswers[question]}\n`; // adiciona mensagem de resposta incorreta
+        }
+    }
+
+    alert(`Score: ${totalScore}/10\n\n${resultMessage}`); // exibe a pontuação total e as mensagens de resultado
 });
