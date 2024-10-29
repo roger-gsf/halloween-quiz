@@ -41,6 +41,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         })
 
+        alert('Score:' + totalScore + ". Answers selected:" + selectedValues.join(', '));
         
     }
 });
