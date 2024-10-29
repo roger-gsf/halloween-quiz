@@ -1,8 +1,11 @@
-document.addEventListener('DOMContentLoaded', function () {
-    function getResult(event) {
-        event.preventDefault();
+document.getElementById('form-quiz').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        alert('clicou')
         const checkboxes = document.querySelectorAll('input[type="radio"]:checked')
         const selectedValues = Array.from(checkboxes).map(checkbox => radio.value);
+
+        console.log(selectedValues)
 
         // function modificarTexto() {
         //     var paragrafo = document.getElementById("meuParagrafo");
@@ -43,5 +46,4 @@ document.addEventListener('DOMContentLoaded', function () {
 
         alert('Score:' + totalScore + ". Answers selected:" + selectedValues.join(', '));
         
-    }
 });
